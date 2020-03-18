@@ -1,10 +1,20 @@
 <!DOCTYPE html>
+{% extends 'blog/base.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>전체 | 코드일기</title>
 </head>
 <body>
-
+    {% block content %}
+        {% for post in posts %}
+            <div class="post">
+                <div class="date">
+                    {{ post.published_date }}
+                </div>
+                <h1><a href="">{{ post.title }}</a></h1>
+            </div>
+        {% endfor %}
+    {% endblock %}
 </body>
 </html>
