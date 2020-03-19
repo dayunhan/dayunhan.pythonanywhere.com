@@ -2,6 +2,7 @@ from .models import Post
 from .forms import PostForm
 
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.utils import timezone
 
 
@@ -25,3 +26,8 @@ def post_new(request):
     else:
         form = PostForm
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post})
